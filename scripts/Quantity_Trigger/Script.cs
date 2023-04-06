@@ -74,7 +74,7 @@ namespace Quantity_Trigger
 
         public void EchoOptions()
         {
-            string intro = "### Examples ###\n";
+            string intro = "### Examples ###\n*Ores/Stone < 40000\n*Ingots/Iron < 500\n=Drills\n\n";
             string ores = "### Possible Ores: ###\n";
             string ingots = "\n### Possible Ingots: ###\n";
             string components = "\n### Possible Components: ###\n";
@@ -104,8 +104,11 @@ namespace Quantity_Trigger
         public void SetGroup(bool state, string group)
         {
             List<IMyTerminalBlock> blocks = new List<IMyTerminalBlock>();
-            GridTerminalSystem.GetBlockGroupWithName(group.Split('=')[1]).GetBlocksOfType(blocks);
-
+            GridTerminalSystem.SearchBlocksOfName(group.Split('=')[1], blocks);
+            if (blocks.Count < 1)
+            {
+                GridTerminalSystem.GetBlockGroupWithName(group.Split('=')[1]).GetBlocksOfType(blocks);
+            }
             foreach (var block in blocks)
             {
                 block.ApplyAction(state ? "OnOff_On" : "OnOff_Off");
@@ -115,17 +118,22 @@ namespace Quantity_Trigger
         public bool CheckCondition(string line)
         {
             string[] parts = line.Split(' ');
-            switch (parts[1])
+            if (items.ContainsKey(parts[0]))
             {
-                case ">":
-                    return items[parts[0]] > double.Parse(parts[2]) ? true : false;
-                case "<":
-                    return items[parts[0]] < double.Parse(parts[2]) ? true : false;
-                default:
-                    Echo(parts[2]);
-                    Echo("###INVALID CHARACTER!!!###");
-                    return false;
+
+                switch (parts[1])
+                {
+                    case ">":
+                        return items[parts[0]] > double.Parse(parts[2]) ? true : false;
+                    case "<":
+                        return items[parts[0]] < double.Parse(parts[2]) ? true : false;
+                    default:
+                        Echo(parts[2]);
+                        Echo("###INVALID CHARACTER!!!###");
+                        return false;
+                }
             }
+            return true;
         }
 
         public void CheckGroups()
