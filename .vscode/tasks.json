@@ -3,30 +3,30 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Export Space Engineers script",
-      "type": "process",
-      "command": "${workspaceFolder}\\utils\\export.bat",
-      "args": [
-        "${fileWorkspaceFolder}\\${relativeFileDirname}"
-      ],
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": false,
-        "clear": false
-      },
-      "problemMatcher": []
+        "label": "Export Space Engineers script",
+        "type": "process",
+        "command": "${workspaceFolder}\\utils\\export.bat",
+        "args": [
+            "${fileWorkspaceFolder}\\${relativeFileDirname}"
+        ],
+        "presentation": {
+            "echo": true,
+            "reveal": "silent",
+            "focus": false,
+            "panel": "shared",
+            "showReuseMessage": false,
+            "clear": false
+        },
+        "problemMatcher": []
     },
     {
-      "label": "Create Space Engineers script",
-      "type": "process",
-      "command": "${workspaceFolder}\\utils\\create.bat",
-      "args": [
-        "${input:dirname}"
-      ],
-      "problemMatcher": []
+        "label": "Create Space Engineers script",
+        "type": "process",
+        "command": "${workspaceFolder}\\utils\\create.bat",
+        "args": [
+            "${input:dirname}"
+        ],
+        "problemMatcher": []
     },
     {
         "label": "build",
@@ -64,7 +64,7 @@
         ],
         "problemMatcher": "$msCompile"
     }
-  ],
+],
   "inputs": [
     {
       "id": "dirname",
