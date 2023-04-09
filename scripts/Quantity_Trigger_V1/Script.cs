@@ -21,7 +21,7 @@ using System.Linq;
  * Prevents collisions of multiple `class Program` declarations.
  * Will be used to detect the ingame script region, whose name is the same.
  */
-namespace Quantity_Trigger
+namespace Quantity_Trigger_V1
 {
 
     /*
@@ -34,7 +34,7 @@ namespace Quantity_Trigger
          * Must be same as the namespace. Will be used for automatic script export.
          * The code inside this region is the ingame script.
          */
-        #region Quantity_Trigger
+        #region Quantity_Trigger_V1
 
         //GLOBALS
         Dictionary<string, double> items = new Dictionary<string, double>();
@@ -174,6 +174,6 @@ namespace Quantity_Trigger
             CheckGroups();
         }
 
-        #endregion // Quantity_Trigger
+        #endregion // Quantity_Trigger_V1
     }
 }
